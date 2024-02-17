@@ -1,4 +1,4 @@
-import {CoursesBrowser} from "./CoursesBrowser.tsx";
+import {CourseBrowser} from "./CourseBrowser.tsx";
 
 
 function Header() {
@@ -12,7 +12,7 @@ function App() {
     <>
       <Header />
         <main>
-            <CoursesBrowser />
+            <CourseBrowser />
         </main>
     </>
   )
