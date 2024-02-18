@@ -48,7 +48,7 @@ const ChapterBrowser = (props: Props) => {
 					setContent(() => newContent)
 				}
 			)
-	}, [content]);
+	}, [props.id]);
 	
 	return content;
 };

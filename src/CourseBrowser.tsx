@@ -52,11 +52,12 @@ export function CourseBrowser() {
 								<>
 									<style jsx>{`
                                           h1 {
-                                            font-size: 4vh;
+                                            font-size: 20px;
                                             color: black;
+                                            font-weight: normal;
                                           }
                                           
-                                          menu {
+                                          div {
                                             display: flex;
                                             flex-direction: column;
                                           }
@@ -64,21 +65,24 @@ export function CourseBrowser() {
                                           ul {
                                             display: flex;
                                             flex-direction: column;
+                                            margin: 0 0 0 15px;
+                                            padding: 0 0 0 0;
                                           }
 
                                           h2 {
-                                            font-size: 3vh;
+                                            font-size: 18px;
                                             color: black;
                                             padding-left: 5vh;
-                                            margin: 0 0 0 5vh;
-                                            border-left: 0.5vh black solid;
+                                            font-weight: normal;
+                                            margin: 0 0 0 0;
+                                            border-left: 2px black solid;
                                           }
 										`}</style>
 									<div>
 										{
 											chapters.map(
 												(c) => {
-													return (<menu>
+													return (<div>
 														<button onClick={() => {
 															setChapterOrUnitID(() => {
 																return {
@@ -100,7 +104,7 @@ export function CourseBrowser() {
 																</button>
 															)
 														}</ul>
-													</menu>)
+													</div>)
 												}
 											)
 										}
@@ -127,6 +131,9 @@ export function CourseBrowser() {
 								<style jsx>{`
 											section {
 											  border-left: 0.5vh gray solid;
+											  min-width: 70%;
+                                              margin: 0 0 0 10px;
+                                              padding: 0 0 0 10px;
 											}
 										`}</style>
 								<section>
@@ -143,6 +150,9 @@ export function CourseBrowser() {
 						<style jsx>{`
 							section {
 							  border-left: 0.5vh gray solid;
+							  margin: 0 0 0 10px;
+                              padding: 0 0 0 10px;
+                              min-width: 70%;
 							}
 						`}</style>
 						<section>

@@ -63,7 +63,7 @@ const UnitBrowser = (props: Props) => {
 					setContent(() => newContent)
 				}
 			)
-	}, [content]);
+	}, [props.id]);
 	
 	return content;
 };
