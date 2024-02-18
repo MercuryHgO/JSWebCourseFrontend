@@ -49,7 +49,6 @@ const UnitBrowser = (props: Props) => {
 							<style jsx>{`
                               .unitBrowser {
                                 width: 100%;
-                                height: 100%;
                                 color: black;
                               }
 							`}</style>

@@ -1,20 +1,26 @@
-import {CourseBrowser} from "./CourseBrowser.tsx";
+import {CourseBrowser} from "./Courses/CourseBrowser.tsx";
+import {BrowserRouter, Route, Routes, } from "react-router-dom";
+import AuthPage from "./Auth/AuthPage.tsx";
 
 
 function Header() {
   return <header>
-    СДЕЛАЙ ХЕДЕР
+      <a href={'/'}>Courses</a>
+      <a href={'/auth'}>Log in</a>
   </header>;
 }
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
         <main>
-            <CourseBrowser />
+            <Routes>
+                <Route path={'/'} element={<CourseBrowser />} />
+                <Route path={'/auth'} element={<AuthPage />} />
+            </Routes>
         </main>
-    </>
+    </BrowserRouter>
   )
 }
 

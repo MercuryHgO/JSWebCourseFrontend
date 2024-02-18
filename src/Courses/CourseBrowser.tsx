@@ -125,26 +125,24 @@ export function CourseBrowser() {
 		
 		switch (chapterOrUnitID.type) {
 			case SelectedId.chapter:
-				console.log('da')
-						setContent( () =>
-							<>
-								<style jsx>{`
-											section {
-											  border-left: 0.5vh gray solid;
-											  min-width: 70%;
-                                              margin: 0 0 0 10px;
-                                              padding: 0 0 0 10px;
-											}
-										`}</style>
-								<section>
-									<ChapterBrowser id={chapterOrUnitID.id} />
-								</section>
-							</>
-						)
+				setContent( () =>
+					<>
+						<style jsx>{`
+							section {
+							  border-left: 0.5vh gray solid;
+							  min-width: 70%;
+							  margin: 0 0 0 10px;
+							  padding: 0 0 0 10px;
+							}
+						`}</style>
+						<section>
+							<ChapterBrowser id={chapterOrUnitID.id} />
+						</section>
+					</>
+				)
 
 				break;
 			case SelectedId.unit:
-				console.log('da')
 				setContent( () =>
 					<>
 						<style jsx>{`

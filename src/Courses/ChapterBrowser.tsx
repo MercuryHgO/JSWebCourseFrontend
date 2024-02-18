@@ -35,7 +35,6 @@ const ChapterBrowser = (props: Props) => {
 							<style jsx>{`
 							  .chapterBrowser {
 								width: 100%;
-								height: 100%;
 							    color: black;
 							  }
 							`}</style>
