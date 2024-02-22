@@ -10,7 +10,7 @@ export type Unit = {
 type fetchUnitOutput = Unit
 
 async function fetchUnit(id: number): Promise<fetchUnitOutput> {
-	const response = await fetch(`http://localhost:6000/api/Unit/get/${id}`, {
+	const response = await fetch(`http://${import.meta.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT}/api/Unit/get/${id}`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'

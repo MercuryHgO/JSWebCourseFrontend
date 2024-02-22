@@ -56,7 +56,7 @@ const AuthLogIn = () => {
 		const formData = new FormData(formElement?.current!)
 		
 		try {
-			const responce = await fetch('http://localhost:6000/login?useCookies=true',{
+			const responce = await fetch(`http://${import.meta.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT}/login?useCookies=true`,{
 				method: 'POST',
 				headers: {
 					'content-type': 'application/json',

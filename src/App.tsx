@@ -4,10 +4,13 @@ import AuthPage from "./Auth/AuthPage.tsx";
 
 
 function Header() {
-  return <header>
-      <a href={'/'}>Courses</a>
-      <a href={'/auth'}>Log in</a>
-  </header>;
+  return <>
+        <div className={'header-pattern'} />
+          <header>
+              <a href={'/'}>Courses</a>
+              <a href={'/auth'}>Log in</a>
+          </header>
+      </>
 }
 
 function App() {

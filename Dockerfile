@@ -17,11 +17,7 @@ FROM system AS devenv
 
 WORKDIR /app
 
-COPY package*.json ./
-COPY . ./
-
-RUN npm install
-
+CMD ["npm", "install"]
 CMD ["npm","run","dev"]
 
 FROM nginx:1.21

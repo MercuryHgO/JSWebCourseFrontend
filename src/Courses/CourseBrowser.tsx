@@ -24,7 +24,7 @@ export function CourseBrowser() {
 	
 	useEffect(() => {
 		
-		fetch('http://localhost:6000/api/Course/get/titles', {
+		fetch(`http://${import.meta.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT}/api/Course/get/titles`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'
@@ -51,34 +51,39 @@ export function CourseBrowser() {
 							const newContent =
 								<>
 									<style jsx>{`
-                                          h1 {
-                                            font-size: 20px;
-                                            color: black;
-                                            font-weight: normal;
-                                          }
-                                          
-                                          div {
-                                            display: flex;
-                                            flex-direction: column;
-                                          }
-                                          
-                                          ul {
-                                            display: flex;
-                                            flex-direction: column;
-                                            margin: 0 0 0 15px;
-                                            padding: 0 0 0 0;
-                                          }
+                                      h1 {
+                                        font-size: 20px;
+                                        font-weight: normal;
+                                        margin: 10px 0 10px 0;
+                                      }
 
-                                          h2 {
-                                            font-size: 18px;
-                                            color: black;
-                                            padding-left: 5vh;
-                                            font-weight: normal;
-                                            margin: 0 0 0 0;
-                                            border-left: 2px black solid;
-                                          }
-										`}</style>
-									<div>
+                                      .navigator {
+                                        display: flex;
+                                        flex-direction: column;
+                                        background-color: #cccccc;
+                                        height: fit-content;
+                                        padding: 0 10px 10px 10px;
+                                        box-shadow: black 5px 5px 0px 0;
+                                        border-radius: 15px;
+                                      }
+
+                                      
+                                      ul {
+                                        display: flex;
+                                        flex-direction: column;
+                                        margin: 0 0 0 15px;
+                                        padding: 0 0 0 0;
+                                      }
+
+                                      h2 {
+                                        font-size: 18px;
+                                        padding-left: 5vh;
+                                        font-weight: normal;
+                                        margin: 0 0 0 0;
+                                        border-left: 2px var(--text-color) solid;
+                                      }
+									`}</style>
+									<div className={'navigator'}>
 										{
 											chapters.map(
 												(c) => {
@@ -129,7 +134,6 @@ export function CourseBrowser() {
 					<>
 						<style jsx>{`
 							section {
-							  border-left: 0.5vh gray solid;
 							  min-width: 70%;
 							  margin: 0 0 0 10px;
 							  padding: 0 0 0 10px;
@@ -147,7 +151,6 @@ export function CourseBrowser() {
 					<>
 						<style jsx>{`
 							section {
-							  border-left: 0.5vh gray solid;
 							  margin: 0 0 0 10px;
                               padding: 0 0 0 10px;
                               min-width: 70%;

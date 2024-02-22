@@ -57,7 +57,7 @@ const AuthSignIn = () => {
 		const formData = new FormData(formElement?.current!)
 		
 		try {
-			const responce = await fetch('http://localhost:6000/register',{
+			const responce = await fetch(`http://${import.meta.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT}/register`,{
 				method: 'POST',
 				headers: {
 					'content-type': 'application/json'

@@ -8,7 +8,7 @@ type fetchChapterOutput = {
 }
 
 export async function fetchChapter(id: number): Promise<fetchChapterOutput> {
-	const response = await fetch(`http://localhost:6000/api/Chapter/get/${id}`, {
+	const response = await fetch(`http://${import.meta.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT}/api/Chapter/get/${id}`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -35,7 +35,6 @@ const ChapterBrowser = (props: Props) => {
 							<style jsx>{`
 							  .chapterBrowser {
 								width: 100%;
-							    color: black;
 							  }
 							`}</style>
 							
