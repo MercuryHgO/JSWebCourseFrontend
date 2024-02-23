@@ -86,21 +86,43 @@ const AuthSignIn = () => {
 	return (
 		<>
 			<style jsx>{`
-				form {
-				  display: flex;
-				  flex-direction: column;
-                  margin: 5px;
-				}
-				input {
-				  all: unset;
-				  border: black 1px solid;
-				}
-				button {
-				  border: black solid 1px;
-				  width: fit-content;
-				  border-radius: 4px;
-				  padding: 0 3px 0 3px;
-				}
+              form {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin: 5px;
+                background-color: #cccccc;
+                padding: 10px;
+                border-radius: 15px;
+                box-shadow: black 5px 5px 0 0;
+              }
+
+              input {
+                all: unset;
+                font-size: 24px;
+                font-weight: 500;
+                border: black 1px solid;
+                margin-bottom: 15px;
+              }
+
+              label {
+                margin-top: 15px;
+              }
+              
+              button {
+                border: black solid 1px;
+                width: auto;
+                text-align: center;
+                font-size: 24px;
+                background-color: #3636ff;
+				color: white;
+                border-radius: 4px;
+                padding: 0 3px 0 3px;
+                margin-top: 30px;
+              }
+              p {
+                margin: 0;
+              }
 			`}</style>
 			<form onSubmit={handleSubmit} ref={formElement}>
 				<label>Email:</label>

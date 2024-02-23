@@ -90,29 +90,50 @@ const AuthLogIn = () => {
 				form {
 				  display: flex;
 				  flex-direction: column;
+				  justify-content: space-between;
 				  margin: 5px;
+				  background-color: #cccccc;
+				  padding: 10px;
+				  border-radius: 15px;
+                  box-shadow: black 5px 5px 0 0;
 				}
 				input {
-				  all: unset;
-				  border: black 1px solid;
+                  all: unset;
+                  font-size: 24px;
+                  font-weight: 500;
+                  border: black 1px solid;
+                  margin-bottom: 15px;
+				}
+				label {
+              margin-top: 15px;
 				}
 				button {
-				  border: black solid 1px;
-				  width: fit-content;
-				  border-radius: 4px;
-				  padding: 0 3px 0 3px;
+                  border: black solid 1px;
+                  width: auto;
+                  text-align: center;
+                  font-size: 24px;
+                  background-color: #3636ff;
+                  color: white;
+                  border-radius: 4px;
+                  padding: 0 3px 0 3px;
+				}
+				div {
+				  display: flex;
+				  flex-direction: column;
 				}
 			`}</style>
 			<form onSubmit={handleSubmit} ref={formElement}>
-				<label>Email:</label>
-				<input name={'email'} type="email"  required/>
+				<div>
+					<label>Email:</label>
+					<input name={'email'} type="email" required/>
 				{/*<p>{emailFieldMessage}</p>*/}
-				<label>Password:</label>
-				<input name={'password'} type="password"  required/>
+					<label>Password:</label>
+					<input name={'password'} type="password" required/>
+				</div>
 				{/*<div>{passwordFieldMessage}</div>*/}
 				<button type="submit">Login</button>
-				<div>{registerResult}</div>
 			</form>
+			<div>{registerResult}</div>
 		</>	);
 };
 

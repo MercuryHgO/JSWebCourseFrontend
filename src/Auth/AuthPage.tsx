@@ -9,6 +9,7 @@ const AuthPage = () => {
 				  color: black;
 				  display: flex;
 				  justify-content: center;
+				  height: fit-content;
 				}
 			`}</style>
 			<div>
