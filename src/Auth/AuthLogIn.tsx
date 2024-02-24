@@ -131,9 +131,9 @@ const AuthLogIn = () => {
 					<input name={'password'} type="password" required/>
 				</div>
 				{/*<div>{passwordFieldMessage}</div>*/}
+				<div>{registerResult}</div>
 				<button type="submit">Login</button>
 			</form>
-			<div>{registerResult}</div>
 		</>	);
 };
 

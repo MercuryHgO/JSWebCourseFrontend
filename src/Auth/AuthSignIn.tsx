@@ -131,8 +131,8 @@ const AuthSignIn = () => {
 				<label>Password:</label>
 				<input name={'password'} type="password" onChange={handlePasswordChange} required/>
 				<div>{passwordFieldMessage}</div>
-				<button type="submit">Register</button>
 				<div>{registerResult}</div>
+				<button type="submit">Register</button>
 			</form>
 		</>	);
 };
