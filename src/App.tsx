@@ -2,6 +2,7 @@ import {CourseBrowser} from "./Courses/CourseBrowser.tsx";
 import {BrowserRouter, Route, Routes,} from "react-router-dom";
 import AuthPage from "./Auth/AuthPage.tsx";
 import {ProfileHeaderWidget} from "./ProfileHeaderWidget.tsx";
+import AdminPanelPage from "./AdminPanel/AdminPanelPage.tsx";
 
 
 function Header() {
@@ -23,6 +24,7 @@ function App() {
             <Routes>
                 <Route path={'/'} element={<CourseBrowser />} />
                 <Route path={'/auth'} element={<AuthPage />} />
+                <Route path={'/adminPanel'} element={<AdminPanelPage />} />
             </Routes>
         </main>
     </BrowserRouter>
