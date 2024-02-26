@@ -1,16 +1,23 @@
-import React, {Dispatch, SetStateAction, useState} from "react";
+import {Dispatch, SetStateAction, useState} from "react";
 import Activity from "../Activities/Activity.tsx";
 
 type Props = {
 	onSubmit: (value: {title: string, description: string}) => void,
-	onCloseActivity: Dispatch<SetStateAction<Activity>>,
+	onCloseActivity: Dispatch<SetStateAction<typeof Activity>>,
+	defaultValue?: {title: string, description: string}
 }
 
 const ChapterEditor = (props: Props) => {
 	
-	const [title, setTitle] = useState('');
-	const [description, setDescription] = useState('');
+	const [title, setTitle] = useState(props.defaultValue?.title ?? '');
+	const [description, setDescription] = useState(props.defaultValue?.description ?? '');
 	
+	function handleClose(): void {
+		// @ts-ignore
+		props.onCloseActivity()
+    }
+
+	// @ts-ignore
 	return (
 		<Activity>
 			<style jsx>{`
@@ -36,7 +43,7 @@ const ChapterEditor = (props: Props) => {
                 }
 			`}</style>
 			<div>
-				<button onClick={props.onCloseActivity}>X</button>
+				<button onClick={handleClose}>X</button>
 				<button onClick={() => props.onSubmit({title: title, description: description})}>Submit</button>
 			</div>
 			<form >

@@ -1,4 +1,8 @@
+import parse from "html-react-parser"
 import {useEffect, useState} from "react";
+import "prismjs/themes/prism.css"
+import hljs from "highlight.js"
+import "highlight.js/styles/atom-one-dark.css"
 
 export type Unit = {
 	unitId: number,
@@ -28,11 +32,22 @@ type UnitContentProps = {
 }
 
 const UnitContent = (props: UnitContentProps) => {
+	hljs.configure({languages: ['javascript'], })
+	
+	hljs.highlightAll()
+	
+	const parsedHtml = parse(
+		props.rawHtml.replace(/<pre(.*?)>(.*?[^]+)<\/pre>/g,'<pre$1><code>$2</code></pre>')
+	)
+	
+	useEffect(() => {
+		hljs.highlightAll()
+	}, []);
 	
 	return <>
 		<style jsx>{`
 		`}</style>
-		<div dangerouslySetInnerHTML={{__html: props.rawHtml}}/>
+		<div>{parsedHtml}</div>
 	</>
 }
 

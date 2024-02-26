@@ -10,7 +10,7 @@ type AdminPanelSection = {
 
 
 export function AdminPanel() {
-	const [panelSections,setPanelSection] = useState<AdminPanelSection[]>([
+	const [panelSections] = useState<AdminPanelSection[]>([
 		{name: "Chapters",element: (<ChapterEditor />)},
 		{name: "Units",element: (<UnitsEditor />)},
 	])

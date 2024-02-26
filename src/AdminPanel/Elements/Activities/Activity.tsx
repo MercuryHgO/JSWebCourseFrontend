@@ -1,9 +1,11 @@
-import {ReactNode, useContext} from "react";
+import {ReactNode} from "react";
 
 
 type Props = {
 	children?: ReactNode,
 }
+
+export type Activity = ReactNode
 
 const Activity = (props: Props) => {
 	
