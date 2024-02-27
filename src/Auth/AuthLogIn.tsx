@@ -95,7 +95,7 @@ const AuthLogIn = () => {
 				  background-color: #cccccc;
 				  padding: 10px;
 				  border-radius: 15px;
-                  box-shadow: black 5px 5px 0 0;
+                  border: 2px black solid;
 				}
 				input {
                   all: unset;

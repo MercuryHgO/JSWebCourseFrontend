@@ -39,8 +39,7 @@ const UnitList = (props: unitListProps) => {
 				display: flex;
 				flex-direction: column;
 				margin: 0 0 0 15px;
-				padding: 0 0 0 0;
-				visibility: hidden;
+				visibility: collapse;
 			}
 
 			h2 {
@@ -52,8 +51,9 @@ const UnitList = (props: unitListProps) => {
 			}
 
 			.active {
-				visibility: visible;
+              visibility: visible;
 			}
+			
 		`}</style>
 		<div>
 			<button onClick={ () => setClazz( v => { return v === '' ? 'active' : '' } ) } >
