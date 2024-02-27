@@ -118,11 +118,11 @@ const MainActivity = (props: SetCurrentActivityProvider) => {
 
 				break;
 			case 'DELETE':
-				deleteUnit(tableAction?.object.chapterId)
+				deleteUnit(tableAction?.object.unitId)
 					.then( r => {
 						switch (r?.status) {
 							case 200:
-								alert('Successfully deleted unit id ' + tableAction.object.chapterId)
+								alert('Successfully deleted unit id ' + tableAction.object.unitId)
 								window.location.reload()
 								break
 							default:
