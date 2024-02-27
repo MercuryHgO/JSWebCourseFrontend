@@ -1,6 +1,8 @@
-import {useEffect, useState} from "react";
+import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import ChapterBrowser, {fetchChapter} from "./ChapterBrowser.tsx";
 import UnitBrowser, {Unit} from "./UnitBrowser.tsx";
+import hljs from "highlight.js"
+import "highlight.js/styles/atom-one-dark.css"
 
 type Chapter = {
 	chapterId: number,
@@ -11,6 +13,65 @@ type Chapter = {
 enum SelectedId {
 	chapter,
 	unit
+}
+
+type unitListProps = {
+	unitsOfChapters: Pick<Unit, 'unitId' | 'title'>[][],
+	c: any,
+	setChapterOrUnitId: Dispatch<SetStateAction<{id: number,type: SelectedId}|undefined>>
+}
+
+const UnitList = (props: unitListProps) => {
+	const [clazz, setClazz] = useState<string>('')
+
+	return (
+	<>
+		<style jsx>{`
+			h1 {
+				font-size: 22px;
+				font-weight: 400;
+				margin: 10px 0 10px 0;
+			}
+
+			
+
+			ul {
+				display: flex;
+				flex-direction: column;
+				margin: 0 0 0 15px;
+				padding: 0 0 0 0;
+				visibility: hidden;
+			}
+
+			h2 {
+				font-size: 18px;
+				font-weight: normal;
+				margin: 0 0 0 0;
+				border-bottom: 1px solid #c4c4c4;
+				padding-bottom: 3px;
+			}
+
+			.active {
+				visibility: visible;
+			}
+		`}</style>
+		<div>
+			<button onClick={ () => setClazz( v => { return v === '' ? 'active' : '' } ) } >
+				<h1>{props.c.title}</h1>
+			</button>
+			<ul className={clazz}>{
+				props.unitsOfChapters[props.c.chapterId].map(
+					u => <button onClick={() => {
+						props.setChapterOrUnitId( () => {
+							return {id: u.unitId, type: SelectedId.unit}
+						})
+					}}>
+						<h2>{u.title}</h2>
+					</button>
+				)
+			}</ul>
+		</div>
+	</>)
 }
 
 export function CourseBrowser() {
@@ -51,66 +112,18 @@ export function CourseBrowser() {
 							const newContent =
 								<>
 									<style jsx>{`
-                                      h1 {
-                                        font-size: 20px;
-                                        font-weight: normal;
-                                        margin: 10px 0 10px 0;
-                                      }
-
                                       .navigator {
-                                        display: flex;
-                                        flex-direction: column;
-                                        background-color: #cccccc;
-                                        height: fit-content;
-                                        padding: 0 10px 10px 10px;
-                                        box-shadow: black 5px 5px 0px 0;
-                                        border-radius: 15px;
-                                      }
-
-                                      
-                                      ul {
-                                        display: flex;
-                                        flex-direction: column;
-                                        margin: 0 0 0 15px;
-                                        padding: 0 0 0 0;
-                                      }
-
-                                      h2 {
-                                        font-size: 18px;
-                                        padding-left: 5vh;
-                                        font-weight: normal;
-                                        margin: 0 0 0 0;
-                                        border-left: 2px var(--text-color) solid;
-                                      }
+										display: flex;
+										flex-direction: column;
+										padding: 0 10px 10px 10px;
+										height: 100%;
+										border-right: 1px solid #c4c4c4;
+									}
 									`}</style>
 									<div className={'navigator'}>
 										{
 											chapters.map(
-												(c) => {
-													return (<div>
-														<button onClick={() => {
-															setChapterOrUnitID(() => {
-																return {
-																	id: c.chapterId,
-																	type: SelectedId.chapter
-																}
-															})
-														}}>
-															<h1>{c.title}</h1>
-														</button>
-														<ul>{
-															unitsOfChapters[c.chapterId].map(
-																u => <button onClick={() => {
-																	setChapterOrUnitID( () => {
-																		return {id: u.unitId, type: SelectedId.unit}
-																	})
-																}}>
-																	<h2>{u.title}</h2>
-																</button>
-															)
-														}</ul>
-													</div>)
-												}
+												(c) => <UnitList c={c} setChapterOrUnitId={setChapterOrUnitID} unitsOfChapters={unitsOfChapters} />
 											)
 										}
 									</div>
@@ -127,6 +140,8 @@ export function CourseBrowser() {
 	useEffect(() => {
 		
 		if(!chapterOrUnitID) return
+
+		
 		
 		switch (chapterOrUnitID.type) {
 			case SelectedId.chapter:
@@ -138,6 +153,7 @@ export function CourseBrowser() {
 							  margin: 0 0 0 10px;
 							  padding: 0 0 0 10px;
 							}
+							
 						`}</style>
 						<section>
 							<ChapterBrowser id={chapterOrUnitID.id} />
@@ -148,24 +164,34 @@ export function CourseBrowser() {
 				break;
 			case SelectedId.unit:
 				setContent( () =>
-					<>
+				{
+					hljs.configure({languages: ['javascript'], })
+	
+					hljs.highlightAll()
+
+					return (<>
 						<style jsx>{`
 							section {
-							  margin: 0 0 0 10px;
-                              padding: 0 0 0 10px;
-                              min-width: 70%;
+							margin: 0 0 0 10px;
+							padding: 0 0 0 10px;
+							min-width: 70%;
 							}
 						`}</style>
 						<section>
 							<UnitBrowser id={chapterOrUnitID.id} />
 						</section>
-					</>
+					</>)
+				}
+					
 				)
 				break;
 			
+			
 		}
-		
+
+
 }, [chapterOrUnitID]);
+
 	
 	return <>
 		{

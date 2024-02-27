@@ -21,7 +21,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: rgb(243, 235, 212); /*TODO: change*/
+  background-color: rgb(255, 255, 255); /*TODO: change*/
 }
 
 .hljs {
@@ -36,27 +36,22 @@
 }
 
 header {
-  background-color: #c43539;
-  margin: 3px 10px 15px -15px;
-  padding: 3px 12px 3px 12px;
-  box-shadow: black 4px 4px 0 0;
-  border-radius: 15px;
+  background-color: #5b5b5b;
+  padding: 6px 12px;
   display: flex;
   flex-direction: row-reverse;
 }
 
 header a {
-  all: unset;
-  cursor: pointer;
-  font-size: 20px;
-  background-color: #cccccc;
-  border-radius: 10px;
-  height: fit-content;
-  padding: 2px 4px 2px 4px;
-  margin: 3px 10px 3px 10px;
-  color: black;
-  box-shadow: black 2px 2px 0 0;
-  font-weight: 500;
+  text-decoration: none;
+  background-color: #817c7c;
+  padding: 5px;
+  margin-left: 10px;
+  max-width: 70px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
 }
 
 .header-pattern {
@@ -81,7 +76,7 @@ body {
 
 main {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   flex: 1;
 }
 

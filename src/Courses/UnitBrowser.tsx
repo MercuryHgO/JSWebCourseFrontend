@@ -21,7 +21,12 @@ async function fetchUnit(id: number): Promise<fetchUnitOutput> {
 		}
 	})
 	
-	return await response.json()
+
+	const data: fetchUnitOutput = await response.json()
+
+	data.htmlCode = data.htmlCode.replace(/<pre(.*?)>(.*?[^]+)<\/pre>/g,'<pre$1><code>$2</code></pre>')
+
+	return data
 }
 type Props = {
 	id: number
@@ -32,18 +37,9 @@ type UnitContentProps = {
 }
 
 const UnitContent = (props: UnitContentProps) => {
-	hljs.configure({languages: ['javascript'], })
 	
-	hljs.highlightAll()
-	
-	const parsedHtml = parse(
-		props.rawHtml.replace(/<pre(.*?)>(.*?[^]+)<\/pre>/g,'<pre$1><code>$2</code></pre>')
-	)
-	
-	useEffect(() => {
-		hljs.highlightAll()
-	}, []);
-	
+	const parsedHtml = parse(props.rawHtml)
+
 	return <>
 		<style jsx>{`
 		`}</style>
@@ -59,6 +55,7 @@ const UnitBrowser = (props: Props) => {
 		fetchUnit(props.id)
 			.then(
 				async (d) => {
+
 					const newContent =
 						<>
 							<style jsx>{`
@@ -79,6 +76,12 @@ const UnitBrowser = (props: Props) => {
 			)
 	}, [props.id]);
 	
+	useEffect( () => {
+		hljs.configure({languages: ['javascript'], })
+	
+		hljs.highlightAll()
+	}, [content])
+
 	return content;
 };
 

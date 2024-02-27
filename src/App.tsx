@@ -7,7 +7,6 @@ import AdminPanelPage from "./AdminPanel/AdminPanelPage.tsx";
 
 function Header() {
   return <>
-        <div className={'header-pattern'} />
           <header>
               <a href={'/auth'}>Log in</a>
               <a href={'/'}>Courses</a>

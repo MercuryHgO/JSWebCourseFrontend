@@ -6,7 +6,6 @@ FROM system AS devenv
 
 WORKDIR /app
 
-CMD ["npm", "install"]
 CMD ["npm","run","dev"]
 
 #FROM nginx:1.21
