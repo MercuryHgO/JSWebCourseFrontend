@@ -8,14 +8,7 @@ WORKDIR /app
 
 CMD ["npm","run","dev"]
 
-#FROM nginx:1.21
-#
-#COPY --from=builder /app/nginx/default.conf.template /etc/nginx/templates/default.conf.template
-#COPY --from=builder /app/dist /usr/share/nginx/html
-#
-#CMD ["nginx", "-g", "daemon off;"]
-
-FROM system
+FROM system as builder
 
 WORKDIR /app
 
@@ -31,6 +24,11 @@ COPY . .
 
 RUN npm install
 
-CMD ["npm", "run", "dev"]
+RUN npm run build
 
-#CMD ["npx", "serve", "-s", "/dist"]
+FROM nginx:1.21
+
+COPY --from=builder /app/nginx.config /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+CMD ["nginx", "-g", "daemon off;"]
