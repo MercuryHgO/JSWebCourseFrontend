@@ -32,6 +32,8 @@ export function Table<T extends Record<string, unknown>>(props: Props<T> ) {
 
           .table-element-header span {
             flex: 1;
+            overflow: hidden;
+            max-height: 100px;
           }
 
           .table-element-menu {

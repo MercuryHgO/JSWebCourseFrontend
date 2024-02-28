@@ -8,7 +8,7 @@
   height: 100%;
 
   color-scheme: light dark;
-  /*background-color: rgb(243, 235, 212); !*TODO: change*!*/
+  background-color: rgb(255, 255, 255);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,7 +21,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: rgb(255, 255, 255); /*TODO: change*/
 }
 
 .hljs {
@@ -47,8 +46,8 @@ header a {
   background-color: #817c7c;
   padding: 5px;
   margin-left: 10px;
-  max-width: 70px;
-  width: 100%;
+  min-width: 70px;
+  width: fit-content;
   text-align: center;
   color: #fff;
   border-radius: 5px;
@@ -67,6 +66,20 @@ header a {
 
 p {
   color: var(--text-color);
+}
+
+p code {
+  all: unset;
+}
+
+h1 code {
+  all: unset;
+}
+
+pre code[class*="language-"] {
+  background-color: #444444;
+  color: white;
+  text-shadow: none;
 }
 
 body {

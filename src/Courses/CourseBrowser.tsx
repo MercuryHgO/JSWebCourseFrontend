@@ -2,7 +2,7 @@ import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import ChapterBrowser, {fetchChapter} from "./ChapterBrowser.tsx";
 import UnitBrowser, {Unit} from "./UnitBrowser.tsx";
 import hljs from "highlight.js"
-import "highlight.js/styles/atom-one-dark.css"
+import "highlight.js/styles/lightfair.css"
 
 type Chapter = {
 	chapterId: number,
